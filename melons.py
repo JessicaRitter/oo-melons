@@ -2,6 +2,11 @@
 from random import randint
 import datetime
 
+class TooManyMelonsError(ValueError):
+
+    def __init__(self):
+        super(TooManyMelonsError, self).__init__("No more than 100 melons, please!")
+
 class AbstractMelonOrder(object):
     """A melon order"""
 
@@ -13,6 +18,9 @@ class AbstractMelonOrder(object):
         self.shipped = False
         self.order_type = order_type
         self.tax = tax
+        if self.qty >= 100:
+            raise TooManyMelonsError()
+
 
     def get_base_price(self):
         """Choose a random integer to be the base price"""
