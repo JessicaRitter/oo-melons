@@ -22,7 +22,7 @@ class AbstractMelonOrder(object):
         base_price = randint(5, 9)
         today = datetime.datetime.today()
         weekday = int(today.weekday())
-        is_rush_hours = int(today.hour())
+        is_rush_hours = int(today.hour)
         if weekday in range(0, 4) and is_rush_hours in range(8, 11):
             base_price += 4
 
